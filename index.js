@@ -9,6 +9,7 @@ const {
   deleteMovie,
   getAMovie,
   updateMovie,
+  movieRecommendation,
 } = require("./controllers/Movies");
 
 const app = express();
@@ -23,6 +24,8 @@ app.get("/", (req, res) => {
 });
 
 app.get("/api/getAllMovies", getAllMoves);
+
+app.get("/api/getMovieRecommendation", movieRecommendation);
 
 app.get("/api/getAMovie/:movie_name", getAMovie);
 

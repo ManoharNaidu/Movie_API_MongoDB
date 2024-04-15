@@ -1,4 +1,6 @@
+const { model } = require("mongoose");
 const Movie = require("../models/movie.model");
+const { OpenAI } = require("openai");
 
 exports.getAllMoves = async (req, res) => {
   try {
@@ -79,6 +81,22 @@ exports.deleteMovie = async (req, res) => {
       throw "Movie does not exist";
     }
     res.status(200).json({ message: "Movie deleted" });
+  } catch (error) {
+    res.status(500).json({ message: error });
+  }
+};
+
+exports.movieRecommendation = async (req, res) => {
+  const openai = new OpenAI({ apikey: process.env.OPENAI_API_KEY });
+
+  try {
+    const chatCompletion = await openai.chat.completions.create({
+      messages: [{ role: "user", content: "Hello, myself Manohar" }],
+      model: "gpt-3.5-turbo",
+    });
+
+    console.log(chatCompletion.data.choices[0].text);
+    res.status(200).json({ message: chatCompletion.data.choices[0].text });
   } catch (error) {
     res.status(500).json({ message: error });
   }
