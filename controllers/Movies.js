@@ -9,6 +9,23 @@ exports.getAllMoves = async (req, res) => {
   }
 };
 
+exports.getAMovie = async (req, res) => {
+  const { movie_name } = req.params;
+  try {
+    if (!movie_name) {
+      throw "Please provide a movie name";
+    }
+
+    const movie = await Movie.findOne({ movie_name });
+    if (!movie) {
+      throw "Movie does not exist";
+    }
+    res.status(200).json(movie);
+  } catch (error) {
+    res.status(500).json({ message: error });
+  }
+};
+
 exports.addMovie = async (req, res) => {
   const { movie_name, info, rating } = req.body;
 
@@ -25,11 +42,12 @@ exports.addMovie = async (req, res) => {
       throw "Rating must be between 0 and 10";
     }
 
-    const movie = new Movie({ movie_name, info, rating });
-    await movie.save();
-    res.status(201).json({ message: "Movie Saved" });
+    // const movie = new Movie({ movie_name, info, rating });
+    // await movie.save();
+    const movie = await Movie.create({ movie_name, info, rating });
+    res.status(201).json({ message: "Movie Saved", movie });
   } catch (error) {
-    res.status(500).json({ message: error });
+    res.status(400).json({ message: error });
   }
 };
 
