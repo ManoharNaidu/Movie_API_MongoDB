@@ -27,7 +27,7 @@ app.get("/api/getAMovie/:movie_name", getAMovie);
 
 app.post("/api/addMovie/", addMovie);
 
-app.delete("/api/deleteMovie", deleteMovie);
+app.delete("/api/deleteMovie/:movie_name", deleteMovie);
 
 app.listen(4000, () => {
   console.log("Server is running on port 4000");

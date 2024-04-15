@@ -15,12 +15,12 @@ To get started with this project, follow the steps below:
 
 The following API endpoints are available:
 
-- `GET /movies`: Get a list of all movies.
-- `POST /movies`: Create a new movie.
-- `PUT /movies/:id`: Update an existing movie.
-- `DELETE /movies/:id`: Delete a movie.
-
-For detailed information on how to use each endpoint, please refer to the [](http://localhost:/4000) after starting the server
+- `GET /`: To have detailed API Documentation.
+- `GET /api/getAllMovies`: Get a list of all movies.
+- `GET /api/getAMovie/:movie_name`: Get a movie named movie_name.
+- `POST /api/addMovie`: Create a new movie.
+- `PUT /api/updateMovie/"movie_name` : Update a movie.
+- `DELETE /movies/:movie_name`: Delete a movie.
 
 ## Contributing
 

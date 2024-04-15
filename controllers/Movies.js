@@ -54,7 +54,7 @@ exports.addMovie = async (req, res) => {
 exports.updateMovie = async (req, res) => {};
 
 exports.deleteMovie = async (req, res) => {
-  const { movie_name } = req.body;
+  const { movie_name } = req.params;
   try {
     if (!movie_name) {
       throw "Please provide a movie name";
