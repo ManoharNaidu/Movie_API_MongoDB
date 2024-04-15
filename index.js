@@ -17,7 +17,7 @@ app.use(express.json());
 // ROUTES
 app.get("/", (req, res) => {
   res.send(
-    "Welcome to the movie database!\nGo to /api/getAllMovies to get all movies\nGo to /api/addMovie to add a movie\nGo to /api/deleteMovie to delete a movie\n"
+    "Welcome to the movie database!\nGo to /api/getAllMovies to get all movies\nGo to /api/addMovie to add a movie\nGo to /api/deleteMovie to delete a movie\nGo to /api/getAMovie/:movie_name to get a movie by name\n"
   );
 });
 
