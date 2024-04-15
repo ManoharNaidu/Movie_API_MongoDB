@@ -20,7 +20,7 @@ The following API endpoints are available:
 - `PUT /movies/:id`: Update an existing movie.
 - `DELETE /movies/:id`: Delete a movie.
 
-For detailed information on how to use each endpoint, please refer to the [API documentation](/docs/api.md).
+For detailed information on how to use each endpoint, please refer to the [](http://localhost:/4000) after starting the server
 
 ## Contributing
 
@@ -32,4 +32,4 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Contact
 
-If you have any questions or need further assistance, feel free to contact the project maintainer at [your-email@example.com](mailto:beesettim27@gmail.com).
+If you have any questions or need further assistance, feel free to contact the project maintainer at [myEmail@example.com](mailto:beesettim27@gmail.com).
