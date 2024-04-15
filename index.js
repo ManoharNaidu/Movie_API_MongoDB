@@ -2,7 +2,7 @@ require("dotenv").config();
 require("./models/movie.model");
 const express = require("express");
 const mongoose = require("mongoose");
-const { addMovie, getAllMoves } = require("./controllers/Movies");
+const { addMovie, getAllMoves, deleteMovie } = require("./controllers/Movies");
 const app = express();
 
 app.use(express.json());
@@ -25,6 +25,8 @@ app.get("/", (req, res) => {
 app.get("/api/getAllMovies", getAllMoves);
 
 app.post("/api/addMovie", addMovie);
+
+app.delete("/api/deleteMovie", deleteMovie);
 
 app.listen(4000, () => {
   console.log("Server is running on port 4000");
