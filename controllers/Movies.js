@@ -51,7 +51,21 @@ exports.addMovie = async (req, res) => {
   }
 };
 
-exports.updateMovie = async (req, res) => {};
+exports.updateMovie = async (req, res) => {
+  const { id } = req.params;
+  const { movie_name, info, rating } = req.body;
+
+  try {
+    await Movie.updateOne(
+      { _id: id },
+      { movie_name, info, rating },
+      { runValidators: true }
+    );
+    res.status(200).json({ message: "Movie updated" });
+  } catch (error) {
+    res.status(500).json({ message: error });
+  }
+};
 
 exports.deleteMovie = async (req, res) => {
   const { movie_name } = req.params;

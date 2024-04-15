@@ -8,6 +8,7 @@ const {
   getAllMoves,
   deleteMovie,
   getAMovie,
+  updateMovie,
 } = require("./controllers/Movies");
 
 const app = express();
@@ -26,6 +27,8 @@ app.get("/api/getAllMovies", getAllMoves);
 app.get("/api/getAMovie/:movie_name", getAMovie);
 
 app.post("/api/addMovie/", addMovie);
+
+app.put("/api/updateMovie/:id", updateMovie);
 
 app.delete("/api/deleteMovie/:movie_name", deleteMovie);
 
