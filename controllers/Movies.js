@@ -1,4 +1,3 @@
-const { model } = require("mongoose");
 const Movie = require("../models/movie.model");
 const { OpenAI } = require("openai");
 
@@ -89,15 +88,22 @@ exports.deleteMovie = async (req, res) => {
 exports.movieRecommendation = async (req, res) => {
   const openai = new OpenAI({ apikey: process.env.OPENAI_API_KEY });
 
+  const allMovies = await Movie.find({});
+  const movieString = allMovies.map((movie) => movie.movie_name).join(", ");
+
+  const prompt = `I am looking for a movie to watch. And I watch ${movieString} movies. Can you suggest me 15 movies to watch?`;
+
   try {
     const chatCompletion = await openai.chat.completions.create({
-      messages: [{ role: "user", content: "Hello, myself Manohar" }],
+      messages: [{ role: "user", content: prompt }],
       model: "gpt-3.5-turbo",
+      max_tokens: 100,
     });
 
     console.log(chatCompletion.data.choices[0].text);
     res.status(200).json({ message: chatCompletion.data.choices[0].text });
   } catch (error) {
+    console.error(error);
     res.status(500).json({ message: error });
   }
 };
