@@ -1,7 +1,9 @@
+require("express-async-errors");
 require("dotenv").config();
 require("./config")();
 require("./models/movie.model");
 const express = require("express");
+const errorHandler = require("./handlers/errorHandler");
 
 const {
   addMovie,
@@ -34,6 +36,8 @@ app.post("/api/addMovie/", addMovie);
 app.put("/api/updateMovie/:id", updateMovie);
 
 app.delete("/api/deleteMovie/:movie_name", deleteMovie);
+
+app.use(errorHandler);
 
 app.listen(4000, () => {
   console.log("Server is running on port 4000");
